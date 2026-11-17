@@ -23,30 +23,21 @@ export default defineNuxtConfig({
       compilerOptions: {
         types: ['bun'],
       },
-      include: ['../scripts', '../tests'],
-    },
-  },
-
-  nitro: {
-    preset: 'cloudflare-module',
-    cloudflare: {
-      wrangler: {
-        name: 'make-vote',
-        preview_urls: true,
-        workers_dev: true,
-        routes: [
-          { pattern: 'make-vote.by-ts.top', custom_domain: true },
-        ],
-      },
+      include: ['../scripts', '../tests', '../cloudflare.config.ts'],
     },
   },
 
   routeRules: {
     '/': { prerender: true },
-    '/workspace': { ssr: false },
+    '/workspace': { ssr: false, prerender: true },
   },
 
   compatibilityDate: '2026-11-14',
+
+  nitro: {
+    preset: 'cloudflare_module',
+    static: true,
+  },
 
   fonts: {
     provider: 'bunny',
