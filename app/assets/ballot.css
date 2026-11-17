@@ -1,0 +1,125 @@
+.ballot-content {
+  color: #172329;
+  font: 13px/1.7 system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+  overflow-wrap: anywhere;
+}
+
+.ballot-content > :first-child {
+  @apply mt-0;
+}
+
+.ballot-content p {
+  margin: .65em 0;
+  min-height: 1.8em;
+}
+
+.ballot-content h1 {
+  @apply leading-normal;
+  font-size: 27px;
+  font-weight: 750;
+  margin: .7em 0;
+  letter-spacing: -.04em;
+}
+
+.ballot-content h2 {
+  @apply text-lg font-bold;
+  line-height: 1.6;
+  margin: 1.1em 0 .6em;
+}
+
+.ballot-content h3 {
+  @apply text-base font-bold;
+  line-height: inherit;
+  margin: 1em 0 .5em;
+}
+
+.ballot-content hr {
+  border: 0;
+  border-top: 1px solid #bfc9c8;
+  margin: 1.2em 0;
+}
+
+.ballot-content ul,
+.ballot-content ol {
+  padding-left: 1.6em;
+  margin: .7em 0;
+}
+
+.ballot-content ul {
+  @apply list-disc;
+}
+
+.ballot-content ol {
+  @apply list-decimal;
+}
+
+.ballot-content blockquote {
+  border-left: 3px solid #9fb9b1;
+  padding-left: 1em;
+  margin: 1em 0;
+}
+
+.ballot-content pre {
+  @apply p-3 whitespace-pre-wrap;
+  background: #f0f3f2;
+}
+
+.ballot-content a {
+  @apply underline;
+  color: #086653;
+}
+
+.ballot-content img:not(.ballot-qr img) {
+  @apply h-auto max-w-full;
+}
+
+.ballot-content table {
+  @apply w-full table-fixed border-collapse;
+  margin: 1em 0;
+}
+
+.ballot-content th,
+.ballot-content td {
+  @apply relative p-2 align-top;
+  border: 1px solid #9faeaa;
+  min-width: 30px;
+}
+
+.ballot-content th {
+  background: #eef3f1;
+}
+
+.ballot-option {
+  @apply flex break-inside-avoid items-baseline gap-3.5 py-2;
+  margin: .7em 0;
+}
+
+.option-box {
+  @apply inline-block self-center;
+  border: 1.5px solid #40564e;
+  width: 19px;
+  height: 19px;
+  flex: 0 0 19px;
+}
+
+.option-text {
+  @apply min-w-0 flex-1;
+}
+
+.ballot-number {
+  @apply font-mono whitespace-nowrap;
+  letter-spacing: .07em;
+}
+
+.ballot-qr {
+  @apply my-3 break-inside-avoid text-center;
+}
+
+.ballot-qr img,
+.ballot-qr svg {
+  @apply inline-block size-24;
+}
+
+.page-break {
+  @apply break-before-page;
+}

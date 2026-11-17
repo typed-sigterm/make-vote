@@ -1,0 +1,499 @@
+{
+  "$id": "https://make-vote.by-ts.top/schemas/mvprj.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "$ref": "#/$defs/__schema0"
+    },
+    "guid": {
+      "$ref": "#/$defs/__schema1"
+    },
+    "title": {
+      "$ref": "#/$defs/__schema2"
+    },
+    "document": {
+      "$ref": "#/$defs/__schema3"
+    },
+    "paper": {
+      "$ref": "#/$defs/__schema11"
+    },
+    "nextSerial": {
+      "$ref": "#/$defs/__schema12"
+    },
+    "exports": {
+      "$ref": "#/$defs/__schema13"
+    }
+  },
+  "required": [
+    "$schema",
+    "guid",
+    "title",
+    "document",
+    "paper",
+    "nextSerial",
+    "exports"
+  ],
+  "additionalProperties": false,
+  "description": "Make Vote 项目",
+  "$defs": {
+    "__schema0": {
+      "type": "string",
+      "const": "https://make-vote.by-ts.top/schemas/mvprj.v1.schema.json"
+    },
+    "__schema1": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "__schema2": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "__schema3": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "doc"
+        },
+        "text": {
+          "$ref": "#/$defs/__schema4"
+        },
+        "attrs": {
+          "$ref": "#/$defs/__schema5"
+        },
+        "marks": {
+          "$ref": "#/$defs/__schema7"
+        },
+        "content": {
+          "$ref": "#/$defs/__schema9"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "__schema4": {
+      "type": "string",
+      "maxLength": 100000
+    },
+    "__schema5": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6
+        },
+        "textAlign": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "left",
+                "center",
+                "right",
+                "justify"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "align": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "left",
+                "center",
+                "right"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "start": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000
+        },
+        "type": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 30
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "language": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 40
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "colspan": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "rowspan": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "colwidth": {
+          "anyOf": [
+            {
+              "maxItems": 20,
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/__schema6"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "style": {
+          "type": "string",
+          "enum": [
+            "fill"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "serial",
+            "unique"
+          ]
+        },
+        "src": {
+          "type": "string",
+          "maxLength": 2000,
+          "pattern": "^[hH][tT][tT][pP][sS]:"
+        },
+        "alt": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 500
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "width": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 10000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "height": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 10000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "__schema6": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2000
+    },
+    "__schema7": {
+      "maxItems": 8,
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/__schema8"
+      }
+    },
+    "__schema8": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "bold",
+            "italic",
+            "strike",
+            "code",
+            "underline",
+            "link",
+            "textStyle"
+          ]
+        },
+        "attrs": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "maxLength": 2000,
+              "pattern": "^(?:[hH][tT][tT][pP][sS]?:|[mM][aA][iI][lL][tT][oO]:)"
+            },
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 1000
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "target": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "_blank",
+                    "_self"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "rel": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "class": {
+              "type": "null"
+            },
+            "fontSize": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "12px",
+                    "14px",
+                    "16px",
+                    "18px",
+                    "20px",
+                    "24px",
+                    "32px"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "__schema9": {
+      "maxItems": 2000,
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/__schema10"
+      }
+    },
+    "__schema10": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "doc",
+            "paragraph",
+            "heading",
+            "text",
+            "image",
+            "hardBreak",
+            "horizontalRule",
+            "blockquote",
+            "bulletList",
+            "orderedList",
+            "listItem",
+            "codeBlock",
+            "table",
+            "tableRow",
+            "tableCell",
+            "tableHeader",
+            "ballotOption",
+            "ballotNumber",
+            "ballotQr",
+            "pageBreak"
+          ]
+        },
+        "text": {
+          "$ref": "#/$defs/__schema4"
+        },
+        "attrs": {
+          "$ref": "#/$defs/__schema5"
+        },
+        "marks": {
+          "$ref": "#/$defs/__schema7"
+        },
+        "content": {
+          "$ref": "#/$defs/__schema9"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "__schema11": {
+      "type": "object",
+      "properties": {
+        "size": {
+          "type": "string",
+          "enum": [
+            "A4",
+            "A5"
+          ]
+        },
+        "orientation": {
+          "type": "string",
+          "enum": [
+            "portrait",
+            "landscape"
+          ]
+        },
+        "margin": {
+          "type": "integer",
+          "minimum": 8,
+          "maximum": 35
+        }
+      },
+      "required": [
+        "size",
+        "orientation",
+        "margin"
+      ],
+      "additionalProperties": false
+    },
+    "__schema12": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000000000
+    },
+    "__schema13": {
+      "maxItems": 1000,
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/__schema14"
+      }
+    },
+    "__schema14": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+        },
+        "guid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "document": {
+          "$ref": "#/$defs/__schema3"
+        },
+        "paper": {
+          "$ref": "#/$defs/__schema11"
+        },
+        "ballots": {
+          "minItems": 1,
+          "maxItems": 1000,
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/__schema15"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "guid",
+        "createdAt",
+        "title",
+        "document",
+        "paper",
+        "ballots"
+      ],
+      "additionalProperties": false
+    },
+    "__schema15": {
+      "type": "object",
+      "properties": {
+        "serial": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 999999999
+        },
+        "unique": {
+          "type": "string",
+          "pattern": "^\\d{12}$"
+        }
+      },
+      "required": [
+        "serial",
+        "unique"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

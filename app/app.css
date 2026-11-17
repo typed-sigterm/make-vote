@@ -1,0 +1,78 @@
+@import 'tailwindcss';
+@import '@nuxt/ui';
+@import './assets/ballot.css';
+
+@theme static {
+  --font-sans: 'Inter', 'Segoe UI', 'Microsoft YaHei', sans-serif;
+}
+
+:root {
+  --ui-primary: #087e65;
+  --ui-radius: .4rem;
+}
+
+body {
+  @apply m-0 bg-default text-default;
+}
+
+/* Tiptap owns these document nodes, so their generated markup needs global selectors. */
+.tiptap {
+  @apply min-h-75 outline-none;
+}
+
+.tiptap:focus-visible {
+  @apply outline-offset-12;
+  outline: 1px dashed #087e6540;
+}
+
+.tiptap .ballot-number {
+  @apply text-xs;
+  border: 1px dashed #bdcfc7;
+  border-radius: 3px;
+  background: #eff5f2;
+  padding: 2px 5px;
+  color: #2f7461;
+}
+
+.tiptap .ProseMirror-selectednode {
+  @apply outline-2 outline-primary outline-offset-2;
+}
+
+.tiptap .selectedCell::after {
+  @apply pointer-events-none absolute inset-0;
+  content: '';
+  background: #087e6520;
+}
+
+.tiptap .column-resize-handle {
+  @apply absolute -right-0.5 -bottom-0.5 top-0 w-1 bg-primary;
+}
+
+.tiptap .tableWrapper {
+  @apply overflow-auto;
+}
+
+.tiptap .page-break {
+  @apply my-5 h-7;
+  border-top: 1px dashed #b2c3bb;
+}
+
+.tiptap .page-break::after {
+  @apply block text-center;
+  content: '分页符';
+  color: #779187;
+  font: 10px/28px system-ui;
+}
+
+@media (pointer: coarse) {
+  button,
+  select {
+    @apply min-h-11;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: max(1rem, 1em);
+  }
+}

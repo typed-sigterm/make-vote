@@ -1,0 +1,45 @@
+/* Include the theme so exported HTML can resolve utilities without the app. */
+@import 'tailwindcss/theme' theme(static);
+@import './ballot.css';
+
+body {
+  @apply m-0;
+  background: #e8eceb;
+}
+
+.ballot-content,
+.ballot-content * {
+  @apply box-border;
+}
+
+.ballot-content {
+  @apply mx-auto my-5 bg-white;
+  width: var(--paper-width);
+  min-height: var(--paper-height);
+  padding: var(--paper-margin);
+  box-shadow: 0 2px 15px #0001;
+}
+
+.print-help {
+  @apply p-4 text-center;
+  font: 14px/1.8 system-ui;
+  color: #334a41;
+}
+
+@media print {
+  body {
+    @apply bg-white;
+  }
+
+  .print-help {
+    @apply hidden;
+  }
+
+  .ballot-content {
+    @apply m-0 min-h-0 w-auto p-0 shadow-none;
+  }
+
+  .ballot-content:not(:last-child) {
+    @apply break-after-page;
+  }
+}
