@@ -5,6 +5,7 @@
 .nitro
 .cache
 .cloudflare
+.wrangler
 test-results
 playwright-report
 dist

@@ -1,0 +1,7 @@
+{
+  "name": "make-vote",
+  "compatibility_date": "2026-11-14",
+  "assets": {
+    "directory": "./.output/public"
+  }
+}

@@ -7,7 +7,7 @@
     "build": "bun run schema:check && nuxt build",
     "dev": "portless",
     "dev:port": "nuxt dev",
-    "deploy": "bunx wrangler --cwd .output deploy",
+    "deploy": "bunx wrangler deploy --config wrangler.jsonc",
     "lint": "eslint .",
     "typecheck": "nuxt typecheck",
     "test": "bun test",
